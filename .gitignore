@@ -1,0 +1,4 @@
+www/*
+node_modules/*
+.DS_Store
+.docker/nginx/conf.d/*
