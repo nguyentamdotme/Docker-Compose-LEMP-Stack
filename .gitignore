@@ -4,3 +4,5 @@ node_modules/*
 .docker/nginx/conf.d/*
 .docker/nginx/logs/*
 .docker/ssl/*
+.docker/mysql/mysqldata/*
+*/.zip
