@@ -29,7 +29,9 @@ services:
       - ./.docker/ssl/:/etc/nginx/ssl/:ro
     command: [nginx-debug, '-g', 'daemon off;']
     networks:
-      - default
+      default:
+        aliases: 
+          - localhost.com
     depends_on:
       - php
     links:
@@ -94,7 +96,6 @@ volumes:
 networks:
   default:
     driver: bridge
-    aliases: ./vhost.yml
 
 
 
