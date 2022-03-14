@@ -18,16 +18,25 @@ services:
     ports:
       - 80:80
       - 443:443
+      - 8000:8000
     environment:
       XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9003 remote_enable=1 remote_autostart=1
     volumes:
       - ./www/php:/var/www/php:ro
       - ./.docker/nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./.docker/ssl/:/etc/nginx/ssl/:ro
     command: [nginx-debug, '-g', 'daemon off;']
     networks:
       default:
         aliases:
-          - domain-local.com
+          - local.dlhf.vn
+          - sso-local.dlhf.vn
+          - services-local.dlhf.vn
+          - biz-local.dlhf.vn
+          - shop-local.dalathasfarm.com
+          - tools-local.dalathasfarm.com
+          - esb-local.dalathasfarm.com
+          - picktool-local.dalathasfarm.com
     depends_on:
       - php
     links:

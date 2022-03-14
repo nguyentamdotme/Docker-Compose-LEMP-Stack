@@ -2,3 +2,5 @@ www/*
 node_modules/*
 .DS_Store
 .docker/nginx/conf.d/*
+.docker/nginx/logs/*
+.docker/ssl/*
