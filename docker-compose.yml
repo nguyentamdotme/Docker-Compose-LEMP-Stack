@@ -22,23 +22,14 @@ services:
       - 8080:8080
       - 3000:3000
     environment:
-      XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9003 remote_enable=1 remote_autostart=1
+      XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9000 remote_enable=1 remote_autostart=1
     volumes:
       - ./www/php:/var/www/php:ro
       - ./.docker/nginx/conf.d:/etc/nginx/conf.d:ro
       - ./.docker/ssl/:/etc/nginx/ssl/:ro
     command: [nginx-debug, '-g', 'daemon off;']
     networks:
-      default:
-        aliases:
-          - local.dlhf.vn
-          - sso-local.dlhf.vn
-          - services-local.dlhf.vn
-          - biz-local.dlhf.vn
-          - shop-local.dalathasfarm.com
-          - tools-local.dalathasfarm.com
-          - esb-local.dalathasfarm.com
-          - picktool-local.dalathasfarm.com
+      - default
     depends_on:
       - php
     links:
@@ -54,14 +45,14 @@ services:
     working_dir: /var/www/php
     volumes:
       - ./www/php:/var/www/php
+      - ./.docker/php/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./.docker/php/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
     networks:
       - default
     depends_on:
       - mysql
     links:
       - redis
-
-
 
   # MySQL Service
   # mariadb:
@@ -103,6 +94,7 @@ volumes:
 networks:
   default:
     driver: bridge
+    aliases: ./vhost.yml
 
 
 
