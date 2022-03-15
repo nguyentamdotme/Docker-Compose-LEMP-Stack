@@ -32,6 +32,14 @@ services:
       default:
         aliases: 
           - localhost.com
+          - local.dlhf.vn
+          - sso-local.dlhf.vn
+          - services-local.dlhf.vn
+          - biz-local.dlhf.vn
+          - shop-local.dalathasfarm.com
+          - tools-local.dalathasfarm.com
+          - esb-local.dalathasfarm.com
+          - picktool-local.dalathasfarm.com
     depends_on:
       - php
     links:
